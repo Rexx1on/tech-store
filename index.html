@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TechStore teknoloji mağazası. DummyJSON üzerinden ürünleri keşfedin.">
+    <title>TechStore | Teknoloji Mağazası</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <a class="logo" href="index.html" aria-label="TechStore ana sayfa">⚡ Tech<span>Store</span></a>
+        <nav aria-label="Ana menü">
+            <a href="index.html" class="nav-link aktif" aria-current="page">Mağaza Vitrini</a>
+            <a href="sepet.html" class="cart-link">🛒 Sepetim <span class="cart-count" id="sepetSayaci">0</span></a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <p class="eyebrow">TEKNOLOJİYİ KEŞFET</p>
+            <h1>İhtiyacın olan teknoloji, <span>tek yerde.</span></h1>
+            <p>Günün ürünlerini keşfet, sepetini oluştur ve kolayca siparişini tamamla.</p>
+        </section>
+
+        <section class="catalog" aria-label="Ürün kataloğu">
+            <div class="catalog-heading">
+                <div>
+                    <p class="eyebrow">TECHSTORE KOLEKSİYONU</p>
+                    <h2>Ürünleri keşfet</h2>
+                </div>
+                <span class="catalog-note">Fiyatlar ₺ cinsindendir</span>
+            </div>
+            <div class="kategori-bar" aria-label="Ürün kategorileri">
+                <button type="button" onclick="urunleriGetir('laptops')" class="kat-btn">💻 Laptoplar</button>
+                <button type="button" onclick="urunleriGetir('smartphones')" class="kat-btn">📱 Akıllı Telefonlar</button>
+                <button type="button" onclick="urunleriGetir('tablets')" class="kat-btn">📟 Tabletler</button>
+                <button type="button" onclick="urunleriGetir('mobile-accessories')" class="kat-btn">🎧 Aksesuarlar</button>
+                <button type="button" onclick="urunleriGetir('mens-watches')" class="kat-btn">⌚ Saatler</button>
+                <button type="button" onclick="urunleriGetir('sunglasses')" class="kat-btn">🕶️ Güneş Gözlükleri</button>
+            </div>
+            <div id="urun-vitrini" class="urun-grid" aria-live="polite">
+                <p class="state-message">Ürünler yükleniyor…</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">TechStore <span>·</span> Teknoloji hayatı kolaylaştırır.</footer>
+    <audio id="sepetSesi" src="https://assets.mixkit.co/active_storage/sfx/2003/2003-preview.mp3" preload="none"></audio>
+    <script src="app.js"></script>
+</body>
+</html>

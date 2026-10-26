@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TechStore alışveriş sepetinizi görüntüleyin ve siparişinizi tamamlayın.">
+    <title>Sepetim ve Ödeme | TechStore</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <a class="logo" href="index.html" aria-label="TechStore ana sayfa">⚡ Tech<span>Store</span></a>
+        <nav aria-label="Ana menü">
+            <a href="index.html" class="nav-link">← Alışverişe Dön</a>
+            <a href="sepet.html" class="cart-link aktif" aria-current="page">🛒 Sepetim <span class="cart-count" id="sepetSayaci">0</span></a>
+        </nav>
+    </header>
+
+    <main class="checkout-page">
+        <div class="page-heading">
+            <p class="eyebrow">ALIŞVERİŞİNİZİN SON ADIMI</p>
+            <h1>Sepetim ve ödeme</h1>
+            <p>Ürünlerinizi gözden geçirin ve teslimat bilgilerinizi girin.</p>
+        </div>
+
+        <div class="checkout-layout">
+            <section class="cart-panel" aria-labelledby="cart-title">
+                <div class="panel-heading">
+                    <div>
+                        <p class="eyebrow">SEPETİNİZ</p>
+                        <h2 id="cart-title">Alışveriş sepetiniz</h2>
+                    </div>
+                    <button type="button" onclick="sepetiBosalt()" class="text-button">Sepeti boşalt</button>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th scope="col">Ürün</th><th scope="col">Ürün adı</th><th scope="col">Marka</th><th scope="col">Fiyat</th><th scope="col">İşlem</th></tr>
+                        </thead>
+                        <tbody id="sepetTabloGovdesi"></tbody>
+                    </table>
+                </div>
+                <div class="coupon-box">
+                    <label for="kuponKodu">İndirim kuponu</label>
+                    <div class="coupon-controls">
+                        <input id="kuponKodu" type="text" placeholder="Kupon kodu" autocomplete="off">
+                        <button type="button" onclick="kuponUygula()" class="secondary-btn">Uygula</button>
+                    </div>
+                    <p id="kuponMesaji" class="coupon-message" aria-live="polite"></p>
+                </div>
+                <div class="cart-summary" aria-live="polite">
+                    <div><span>Ara toplam</span><strong id="araToplamAlani">₺0,00</strong></div>
+                    <div><span>Kargo</span><strong id="kargoAlani">₺0,00</strong></div>
+                    <div id="indirimSatiri" class="discount-row" hidden><span>Kupon indirimi</span><strong id="indirimAlani">−₺0,00</strong></div>
+                    <div class="grand-total"><span>Genel toplam</span><strong id="toplamTutarAlani">₺0,00</strong></div>
+                    <p class="shipping-note">₺1.000 ve üzeri siparişlerde kargo ücretsizdir.</p>
+                </div>
+            </section>
+
+            <aside class="payment-panel">
+                <form id="odemeFormu" onsubmit="siparisiTamamla(event)">
+                    <fieldset>
+                        <legend>💳 Güvenli ödeme</legend>
+                        <p class="form-intro">Teslimat ve ödeme bilgilerinizi girin.</p>
+                        <div class="form-grup">
+                            <label for="musteriAd">Ad soyad</label>
+                            <input type="text" id="musteriAd" name="musteriAd" required autocomplete="name" placeholder="Adınız ve soyadınız">
+                        </div>
+                        <div class="form-grup">
+                            <label for="adres">Teslimat adresi</label>
+                            <textarea id="adres" name="adres" rows="3" required autocomplete="street-address" placeholder="Mahalle, sokak, il / ilçe"></textarea>
+                        </div>
+                        <div class="form-grup">
+                            <label for="kartNo">Kredi kartı numarası</label>
+                            <input type="text" id="kartNo" name="kartNo" inputmode="numeric" autocomplete="cc-number" required pattern="[0-9]{16}" maxlength="16" title="16 haneli kart numaranızı boşluksuz girin" placeholder="1234 1234 1234 1234">
+                            <small>16 rakam, boşluksuz</small>
+                        </div>
+                        <div class="yan-yana-input">
+                            <div class="form-grup">
+                                <label for="sonKullanma">Son kullanma</label>
+                                <input type="text" id="sonKullanma" name="sonKullanma" inputmode="numeric" autocomplete="cc-exp" required pattern="(0[1-9]|1[0-2])/[0-9]{2}" maxlength="5" placeholder="08/28" title="AA/YY biçiminde girin">
+                            </div>
+                            <div class="form-grup">
+                                <label for="cvv">CVV</label>
+                                <input type="password" id="cvv" name="cvv" inputmode="numeric" autocomplete="cc-csc" required pattern="[0-9]{3}" maxlength="3" placeholder="•••" title="3 haneli CVV kodunu girin">
+                            </div>
+                        </div>
+                        <button type="submit" class="satinal-btn">Siparişi tamamla <span>→</span></button>
+                        <p class="demo-note">Demo mağaza: ödeme alınmaz, kart bilgileri kaydedilmez.</p>
+                    </fieldset>
+                </form>
+            </aside>
+        </div>
+    </main>
+    <footer class="site-footer">TechStore <span>·</span> Teknoloji hayatı kolaylaştırır.</footer>
+    <script src="app.js"></script>
+</body>
+</html>
